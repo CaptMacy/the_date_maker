@@ -2,6 +2,7 @@ import './style.css'
 import javascriptLogo from './javascript.svg'
 import viteLogo from '/vite.svg'
 import { setupCounter } from './counter.js'
+import { loadSidebar, loadSidebarStyles } from './components/sidebar/sidebar.js'
 
 document.querySelector('#app').innerHTML = `
   <div>
@@ -20,5 +21,8 @@ document.querySelector('#app').innerHTML = `
     </p>
   </div>
 `
+
+loadSidebar();
+loadSidebarStyles();
 
 setupCounter(document.querySelector('#counter'))
