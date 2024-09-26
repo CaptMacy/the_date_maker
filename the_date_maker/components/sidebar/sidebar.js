@@ -23,9 +23,8 @@ export function loadSidebarStyles() {
     document.head.appendChild(link);
 }
 
-console.log(loadSidebar());
-
-// btn.addEventListener('click', async() => {
-//     await loadSidebar(); 
-//     sidebar.classList.toggle('active'); 
-// });
+document.addEventListener('DOMContentLoaded', () => {
+    btn.addEventListener('click', () => {
+        sidebar.classList.toggle('active'); 
+    });
+})
