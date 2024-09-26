@@ -1,8 +1,11 @@
-import 'boxicons'
-import './sidebar.css'
+import 'boxicons/css/boxicons.min.css';
+import './sidebar.css';
+
+const sidebar = document.getElementById('.sidebar');
+const btn = document.getElementById('#btn');
 
 export function loadSidebar() {
-    fetch('components/sidebar/sidebar.html')
+    return fetch('components/sidebar/sidebar.html')
         .then(response => response.text())
         .then(html => {
             console.log(html);
@@ -19,3 +22,10 @@ export function loadSidebarStyles() {
     link.href = 'the_date_maker/components/sidebar/sidebar.css';
     document.head.appendChild(link);
 }
+
+console.log(loadSidebar());
+
+// btn.addEventListener('click', async() => {
+//     await loadSidebar(); 
+//     sidebar.classList.toggle('active'); 
+// });
