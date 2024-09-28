@@ -60,7 +60,9 @@
 
 .sidebar.active .top .sidebar-logo {
     opacity: 1;
-}
+    transition: all 1s ease;
+}    
+
 
 .top .sidebar-logo i {
     font-size: 2rem;
