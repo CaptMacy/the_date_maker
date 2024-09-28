@@ -1,22 +1,29 @@
 #sidebar {
-    margin: 0;
-    padding: 0;
     box-sizing: border-box;
     font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
 }
 
+.user {
+    display: flex;
+    justify-content: center;
+}
+
+.sidebar.active .user {
+    display: block;
+}
+
 .user-img {
-    width: 50px;
+    width: 3.125rem;
     border-radius: 100%;
     border: 1px solid #eee;
 }
 
 .sidebar {
-    position: absolute;
+    position: fixed;
     top: 0;
     left: 0;
     height: 100vh;
-    width: 80px;
+    width: 5rem;
     background-color: #795b81;
     padding: 0.4rem 0.8rem;
     transition: all 0.5s ease;
@@ -44,7 +51,7 @@
 .sidebar .top .sidebar-logo {
     color: #fff;
     display: flex;
-    height: 50px;
+    height: 3.125rem;
     width: 100%;
     align-items: center;
     pointer-events: none;
@@ -57,14 +64,21 @@
 
 .top .sidebar-logo i {
     font-size: 2rem;
-    margin-right: 5px;
+    margin-right: 0.313rem;
+}
+
+.sidebar ul {
+    position: relative;
+    padding: 0;
+    box-sizing:border-box;
+    top: 2rem;
 }
 
 .sidebar ul li {
     position: relative;
     list-style-type: none;
-    height: 50px;
-    width: 90%;
+    height: 3.125rem;
+    width: 60%;
     margin: 0.8rem auto;
     line-height: 50px;
 }
@@ -75,18 +89,23 @@
     align-items: center;
     text-decoration: none;
     border-radius: 0.8rem;
-    width: 50px;
 }
 
 .sidebar ul li a:hover {
     color: #fff;
     background-color: #12171e;
+    min-width: 3.125rem;
+}
+
+.sidebar.active ul li a:hover {
+    color: #12171e;
+    background-color: #fff;
 }
 
 .sidebar ul li a i {
-    min-width: 50px;
+    min-width: 3.125rem;
     text-align: center;
-    height: 50px;
+    height: 3.125rem;
     border-radius: 12px;
     line-height: 50px;
 }
@@ -100,11 +119,6 @@
 }
 
 .sidebar ul li .tooltip {
-    position: absolute;
-    left: 125px;
-    top: 50%;
-    transform: translate(-50%, -50%);
-    box-shadow: 0 0.5rem 0.8rem rgba(0, 0, 0, 0.2);
     border-radius: .6rem;
     padding: .4rem 1.2rem;
     line-height: 1.8rem;
@@ -114,4 +128,8 @@
 
 .sidebar ul li:hover .tooltip {
     opacity: 1;
+}
+
+.sidebar.active ul li .tooltip {
+    opacity: 0;
 }
