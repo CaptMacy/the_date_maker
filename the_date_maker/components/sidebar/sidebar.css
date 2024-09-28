@@ -39,7 +39,7 @@
     top: .4rem;
     left: 50%;
     font-size: 1.2rem;
-    line-height: 50px;
+    line-height: 2.5;
     transform: translateX(-50%);
     cursor: pointer;
 }
@@ -80,7 +80,7 @@
     height: 3.125rem;
     width: 60%;
     margin: 0.8rem auto;
-    line-height: 50px;
+    line-height: 2.5;
 }
 
 .sidebar ul li a {
@@ -107,7 +107,7 @@
     text-align: center;
     height: 3.125rem;
     border-radius: 12px;
-    line-height: 50px;
+    line-height: 3;
 }
 
 .sidebar .nav-item {
@@ -121,7 +121,7 @@
 .sidebar ul li .tooltip {
     border-radius: .6rem;
     padding: .4rem 1.2rem;
-    line-height: 1.8rem;
+    line-height: 2;
     z-index: 20;
     opacity: 0;
 }

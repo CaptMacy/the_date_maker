@@ -2,7 +2,7 @@ import './style.css'
 import javascriptLogo from './javascript.svg'
 import viteLogo from '/vite.svg'
 import { setupCounter } from './counter.js'
-import { loadSidebar } from './components/sidebar/sidebar.js'
+import './components/sidebar/sidebar.js'
 
 document.querySelector('#app').innerHTML = `
   <div>
@@ -16,11 +16,15 @@ document.querySelector('#app').innerHTML = `
     <div class="card">
       <button id="counter" type="button"></button>
     </div>
+    <div class="card">
+      <button id="clear" type="button"></button>
+    </div>
     <p class="read-the-docs">
       Click on the Vite logo to learn more
     </p>
   </div>
 `
 
-loadSidebar();
-setupCounter(document.querySelector('#counter'))
+const counter = document.getElementById('counter')
+const clear = document.getElementById('clear')
+setupCounter(counter, clear)

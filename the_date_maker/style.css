@@ -51,7 +51,7 @@ h1 {
 .logo:hover {
   filter: drop-shadow(0 0 2em #646cffaa);
 }
-.logo.vanilla:hover {
+.logo.vanilla:hover, .user-img:hover {
   filter: drop-shadow(0 0 2em #f7df1eaa);
 }
 
