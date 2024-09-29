@@ -49,10 +49,10 @@ h1 {
   transition: filter 300ms;
 }
 .logo:hover {
-  filter: drop-shadow(0 0 2em #646cffaa);
+  filter: drop-shadow(0 0 5em #646cffaa);
 }
 .logo.vanilla:hover, .user-img:hover {
-  filter: drop-shadow(0 0 2em #f7df1eaa);
+  filter: drop-shadow(0 0 5em #f7df1eaa);
 }
 
 .card {

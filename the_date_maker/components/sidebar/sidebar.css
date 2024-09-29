@@ -113,16 +113,17 @@
 }
 
 .sidebar .nav-item {
-    opacity: 0;
+    display: none;
+    transition: all 0.2s ease;
 }
 
 .sidebar.active .nav-item {
-    opacity: 1;
+    display: block;
 }
 
 .sidebar ul li .tooltip {
     border-radius: .6rem;
-    padding: .4rem 1.2rem;
+    padding: .4rem 2rem;
     line-height: 2;
     z-index: 20;
     opacity: 0;
