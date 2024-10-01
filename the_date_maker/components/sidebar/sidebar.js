@@ -17,8 +17,17 @@ document.addEventListener('DOMContentLoaded', async () => {
     await loadSidebar();
     const sidebar = document.querySelector('.sidebar');
     const btn = document.getElementById('btn');
+    const calendarMain = document.getElementById('calendar-main');
 
     btn.addEventListener('click', () => {
         sidebar.classList.toggle('active'); 
-    });
+
+        if (sidebar.classList.contains('active')) {
+            calendarMain.style.left = '17.25rem';
+            calendarMain.style.width = 'calc(100% - 17.25rem)';
+          } else {
+            calendarMain.style.left = '6.625rem';
+            calendarMain.style.width = 'calc(100% - 6.625rem)';
+          }
+    });    
 })

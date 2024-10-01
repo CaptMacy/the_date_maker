@@ -110,6 +110,11 @@
     height: 3.125rem;
     border-radius: 12px;
     line-height: 3;
+    margin-right: 2rem;
+}
+
+.sidebar.active ul li a i {
+    margin-right: 0;
 }
 
 .sidebar .nav-item {
@@ -123,9 +128,10 @@
 
 .sidebar ul li .tooltip {
     border-radius: .6rem;
-    padding: .4rem 2rem;
+    padding: .4rem .2rem;
     line-height: 2;
     z-index: 20;
+    background-color: #242424;
     opacity: 0;
 }
 
@@ -135,4 +141,5 @@
 
 .sidebar.active ul li .tooltip {
     opacity: 0;
+    padding: .4rem 2rem;
 }

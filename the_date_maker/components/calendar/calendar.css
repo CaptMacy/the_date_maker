@@ -1,0 +1,29 @@
+#calendar-main {
+    position: relative;
+    left: 106px;
+    height: 100vh;
+    transition: all 0.5s ease;
+    width: calc(100% - 106px);
+}
+
+#calendar {
+    display: grid;
+    grid-template-columns: repeat(7, 1fr);
+    grid-template-rows: repeat(5, 1fr);
+    color: #fff;
+    height: 100%;
+    margin: 0 auto;
+}
+
+.day {
+    border-bottom: 1px solid #fff;
+    border-right: 1px solid #fff;
+    text-align: center;
+    padding-top: 5px;
+    cursor: pointer;
+    transition: background-color 200ms, color 200ms;
+}
+
+.weekend {
+    color: aqua;
+}
