@@ -5,8 +5,6 @@ export function loadSidebar() {
     return fetch('components/sidebar/sidebar.html')
         .then(response => response.text())
         .then(html => {
-            console.log(html);
-            
             const sidebarContainer = document.getElementById('sidebar');
             sidebarContainer.innerHTML = html;
         })
