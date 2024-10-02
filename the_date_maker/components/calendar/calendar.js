@@ -14,15 +14,29 @@ export function loadCalendar() {
 
 const buildCalander = async() => {
     await loadCalendar();
-
     const calendar = document.getElementById('calendar');
-    
-    
+
     for(let day = 1; day <= daysInMonth(2024, 10); day++){
         const weekend = isWeekend(day);
+
+        const dayElement = document.createElement('div');
+        dayElement.classList.add('day')
+        weekend ? dayElement.classList.add('weekend') : '';
+        dayElement.textContent = day;
         
-        calendar.insertAdjacentHTML('beforeend', `<div class='day ${weekend ? 'weekend' : ''}'>${day}</div>`);
+        calendar.appendChild(dayElement);
+
+        dayElement.addEventListener('click', handleSelect);
+
     }
+}
+
+const handleSelect = (event) => {
+    const selectedElement = document.querySelector('.selected');
+
+    if(selectedElement) selectedElement.classList.remove('selected');
+
+    event.target.classList.add('selected');
 }
 
 buildCalander();

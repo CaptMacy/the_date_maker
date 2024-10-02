@@ -24,6 +24,22 @@
     transition: background-color 200ms, color 200ms;
 }
 
+.day:hover {
+    outline: 4px auto -webkit-focus-ring-color;
+}
+
+/* :nth-child(-n +7 of div.day) {
+    border-top: 1px solid #fff;;
+} */
+
 .weekend {
     color: aqua;
+}
+
+.day:hover.selected {
+    outline: 2px solid aqua;
+}
+
+.selected {
+   border: 2px solid aqua;
 }
