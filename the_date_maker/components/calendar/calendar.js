@@ -1,7 +1,8 @@
 import './calendar.css'
 import { isWeekend } from '/modules/date-helper.js'
 import { daysInMonth } from '/modules/date-helper.js'
-import { today } from '/modules/date-helper.js'
+import { currentDay } from '/modules/date-helper.js'
+import { currentHour } from '/modules/date-helper.js'
 
 export function loadCalendar() {
     return fetch('components/calendar/calendar.html')
@@ -13,9 +14,10 @@ export function loadCalendar() {
         .catch(err => console.log('failed to load sidebar', err));
     }
 
-const buildCalander = async() => {
+// build calendar main view/month view
+const buildCalanderMonthView = async() => {
     await loadCalendar();
-    const calendar = document.getElementById('calendar');
+    const calendar = document.getElementById('calendar-month-view');
 
     for(let day = 1; day <= daysInMonth(2024, 10); day++){
         const weekend = isWeekend(day);
@@ -29,16 +31,41 @@ const buildCalander = async() => {
 
         dayElement.addEventListener('click', handleSelect);
 
-        if(day == today) dayElement.classList.add('today');
+        if(day == currentDay) dayElement.classList.add('currentDay');
     }
+}
+
+const buildCalendarDayView = () => {
+    const calendar = document.getElementById('calendar-day-view')
+    const hourContainer = document.createElement('div')
+    hourContainer.classList.add('hour-container')
+    calendar.appendChild(hourContainer)
+
+    console.log(1111);
+    console.log(hourContainer);
+    
+
+    for(let hour = 1; hour <= 24; hour++) {
+        const hourElement = document.createElement('div')
+        hourElement.classList.add('hour')
+        hourElement.textContent = hour;
+
+        hourContainer.appendChild(hourElement)
+
+        console.log(2);
+        
+    }
+    console.log(3);
+    
 }
 
 const handleSelect = (event) => {
     const selectedElement = document.querySelector('.selected');
 
     if(selectedElement) selectedElement.classList.remove('selected');
+    buildCalendarDayView();
 
     event.target.classList.add('selected');
 }
 
-buildCalander();
+buildCalanderMonthView();

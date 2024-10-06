@@ -7,7 +7,8 @@
     width: calc(100% - 106px);
 }
 
-#calendar {
+/* Month View Styles */
+#calendar-month-view {
     display: grid;
     grid-template-columns: repeat(7, 1fr);
     grid-template-rows: repeat(5, 1fr);
@@ -46,7 +47,30 @@
    color: aqua;
 }
 
-.today {
+.currentDay {
     background-color: aqua;
     color: black;
 }
+
+
+/* Day View Styles*/
+#calendar-day-view {
+    display: flex;
+    color: #fff;
+    height: 100%;
+}
+
+.hour-container {
+    width: fit-content;
+    height: 100vh;
+    color: #fff;
+}
+
+.hour {
+    height: 5rem;
+    width: 5rem;
+}
+
+/* #calendar-day-view:active {
+    display: flex;
+} */
