@@ -33,7 +33,7 @@
 } */
 
 .weekend {
-    color: aqua;
+    color: #52D55F;
 }
 
 .day:hover.selected {
@@ -41,5 +41,11 @@
 }
 
 .selected {
-   border: 2px solid aqua;
+   border: 4px solid aqua;
+   color: aqua;
+}
+
+.today {
+    background-color: aqua;
+    color: black;
 }
