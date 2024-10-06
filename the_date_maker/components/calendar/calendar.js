@@ -21,8 +21,8 @@ const buildCalander = async() => {
         const weekend = isWeekend(day);
 
         const dayElement = document.createElement('div');
-        dayElement.classList.add('day')
-        weekend ? dayElement.classList.add('weekend') : '';
+        dayElement.classList.add('day-of-week')
+        weekend ? dayElement.classList.add('weekend-highlight') : '';
         dayElement.textContent = day;
         
         calendar.appendChild(dayElement);
