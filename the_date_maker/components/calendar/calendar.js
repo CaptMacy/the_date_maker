@@ -1,7 +1,7 @@
 import './calendar.css'
-import {isWeekend} from '/modules/date-helper.js'
-import {daysInMonth} from '/modules/date-helper.js'
-import {today} from '/modules/date-helper.js'
+import { isWeekend } from '/modules/date-helper.js'
+import { daysInMonth } from '/modules/date-helper.js'
+import { today } from '/modules/date-helper.js'
 
 export function loadCalendar() {
     return fetch('components/calendar/calendar.html')

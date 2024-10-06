@@ -1,7 +1,8 @@
 #calendar-main {
     position: relative;
     left: 106px;
-    height: 100vh;
+    top: 3vh;
+    height: 94vh;
     transition: all 0.5s ease;
     width: calc(100% - 106px);
 }
@@ -28,9 +29,9 @@
     outline: 4px auto -webkit-focus-ring-color;
 }
 
-/* :nth-child(-n +7 of div.day) {
+:nth-child(-n +7 of div.day) {
     border-top: 1px solid #fff;;
-} */
+}
 
 .weekend {
     color: #52D55F;
