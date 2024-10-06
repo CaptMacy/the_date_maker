@@ -9,3 +9,21 @@
   width: calc(100% - 106px);
   z-index: 20;
 }
+
+.header {
+    height: 100%;
+    display: flex;
+    justify-content: end;
+    align-items: center;
+    gap: 10px;
+    margin-right: 10px;
+}
+
+.header button {
+    background-color: aqua;
+    min-height: 2.5rem;
+    min-width: 4rem;
+    cursor: pointer;
+    color: #212121;
+
+}
