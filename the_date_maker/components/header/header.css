@@ -13,8 +13,12 @@
 .header {
     height: 100%;
     display: flex;
-    justify-content: end;
+    justify-content: space-between;
     align-items: center;
+}
+
+.btn-container {
+    display: flex;
     gap: 10px;
     margin-right: 10px;
 }
@@ -26,4 +30,8 @@
     cursor: pointer;
     color: #212121;
 
+}
+
+.month-container {
+  margin-left: 10px;
 }

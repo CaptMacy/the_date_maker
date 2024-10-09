@@ -54,7 +54,7 @@
 
 
 /* Day View Styles*/
-#calendar-day-view {
+/* #calendar-day-view {
     display: flex;
     color: #fff;
     height: 100%;
@@ -71,7 +71,7 @@
     width: 5rem;
     text-align: center;
     padding-top: 5px;
-}
+} */
 
 /* #calendar-day-view:active {
     display: flex;
