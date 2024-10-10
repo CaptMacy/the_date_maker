@@ -4,6 +4,7 @@ export { currentDay }
 export { currentHour }
 export { getDisplayMonth }
 export { getDisplayYear }
+export { handleDateChange }
 
 const isWeekend = (day) => day % 7 == 6 || day % 7 == 0;
 
@@ -33,4 +34,13 @@ const getDisplayYear = () => {
     return new Intl.DateTimeFormat('en',{
         year: 'numeric',
     }).format(date)
+}
+
+const handleDateChange = (event) => {
+    if(event.target.id == 'date-last') {
+        console.log(event.target.id);
+        
+    }
+    else console.log(event.target.id);
+    
 }

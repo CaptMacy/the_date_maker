@@ -11,27 +11,39 @@
 }
 
 .header {
-    height: 100%;
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
+  height: 100%;
+  display: flex;
+  align-items: center;
 }
 
 .btn-container {
-    display: flex;
-    gap: 10px;
-    margin-right: 10px;
+  margin-left: auto;
+  gap: 10px;
+  margin-right: 10px;
 }
 
 .header button {
-    background-color: aqua;
-    min-height: 2.5rem;
-    min-width: 4rem;
-    cursor: pointer;
-    color: #212121;
-
+  background-color: aqua;
+  min-height: 2.5rem;
+  min-width: 4rem;
+  cursor: pointer;
+  color: #212121;
 }
 
-.month-container {
+.date-container {
   margin-left: 10px;
+}
+
+.date-display-nav i {
+  width: 2rem;
+  height: 2rem;
+  text-align: center;
+  line-height: 1.5;
+  font-size: 20px;
+  cursor: pointer;
+  border-radius: 5px;
+}
+
+.date-display-nav i:hover {
+  background-color: #323232;
 }
