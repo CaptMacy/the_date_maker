@@ -1,0 +1,17 @@
+.insta-entry-form {
+    display: none;
+}
+
+.insta-entry-form.active {
+    display: flex;
+    place-items: center;
+    flex-direction: column;
+    gap: 20px;
+    font-size: 20px;
+    width: 25rem;
+    height: 25vh;
+    position: absolute;
+    top: 35%;
+    left: calc(50% - 12.5rem);
+    background-color: black;
+}

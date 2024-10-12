@@ -2,6 +2,7 @@ import './calendar.css'
 import { isWeekend } from '/modules/date-helper.js'
 import { daysInMonth } from '/modules/date-helper.js'
 import { currentDay } from '/modules/date-helper.js'
+import { entryFormHelper } from '/components/insta_entry/insta_entry.js'
 // import { currentHour } from '/modules/date-helper.js'
 
 export function loadCalendar() {
@@ -11,7 +12,7 @@ export function loadCalendar() {
             const calendar = document.getElementById('calendar-main')
             calendar.innerHTML = html
         })
-        .catch(err => console.log('failed to load sidebar', err));
+        .catch(err => console.log('failed to load calendar', err));
     }
 
 // build calendar main view/month view
@@ -30,6 +31,7 @@ const buildCalanderMonthView = async() => {
         calendar.appendChild(dayElement);
 
         dayElement.addEventListener('click', handleSelect);
+        dayElement.addEventListener('dblclick', entryFormHelper);
 
         if(day == currentDay) dayElement.classList.add('currentDay');
     }
