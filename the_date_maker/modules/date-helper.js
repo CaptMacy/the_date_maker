@@ -9,13 +9,19 @@ export { handleDateChange }
 const isWeekend = (day) => day % 7 == 6 || day % 7 == 0;
 
 const daysInMonth = (year, month) => {
+    const calendarDivId = {};
     if(year == null && month == null) {
-        const month = new Date().getMonth() + 1;
-        const year = new Date().getFullYear();
-
-        return new Date(year, month, 0).getDate()
+        month = new Date().getMonth() + 1;
+        year = new Date().getFullYear();
     }
-    else return new Date(year, month, 0).getDate();
+        
+        const days = new Date(year, month, 0).getDate()
+        const divId = `${month}${year}`;
+
+        calendarDivId.id = divId
+        calendarDivId.days = days
+
+        return calendarDivId
 }
 
 const currentDay = new Date().getDate();

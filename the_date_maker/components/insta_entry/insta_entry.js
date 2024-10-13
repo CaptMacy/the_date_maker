@@ -8,7 +8,6 @@ export function loadInstaEntries() {
         .then(html => {
             const instaEntryForm = document.getElementById('insta-entry-form')
             instaEntryForm.innerHTML = html;
-            console.log(html);
         })
     }
 

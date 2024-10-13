@@ -1,7 +1,5 @@
 import './calendar.css'
-import { isWeekend } from '/modules/date-helper.js'
-import { daysInMonth } from '/modules/date-helper.js'
-import { currentDay } from '/modules/date-helper.js'
+import { isWeekend, daysInMonth, currentDay } from '/modules/date-helper.js'
 import { entryFormDisplayHelper } from '/components/insta_entry/insta_entry.js'
 // import { currentHour } from '/modules/date-helper.js'
 
@@ -20,10 +18,11 @@ const buildCalanderMonthView = async() => {
     await loadCalendar();
     const calendar = document.getElementById('calendar-month-view');
 
-    for(let day = 1; day <= daysInMonth(); day++){
+    for(let day = 1; day <= daysInMonth().days; day++){
         const weekend = isWeekend(day);
 
         const dayElement = document.createElement('div');
+        dayElement.id = `${daysInMonth().id}${day}`;
         dayElement.classList.add('day-of-week')
         weekend ? dayElement.classList.add('weekend-highlight') : '';
         dayElement.textContent = day;
