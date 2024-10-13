@@ -1,3 +1,5 @@
+import { v4 as uniqueId } from 'uuid';
+
 export { addInstaEntry }
 
 
@@ -13,6 +15,9 @@ const addInstaEntry = (name, description, time) =>  {
     }
 
     storageLocker.unshift(diaryEntry)
+
+    console.log(storageLocker);
+    
 
     localStorage.setItem('data', JSON.stringify(storageLocker))
 }

@@ -41,10 +41,10 @@ const entryFormDataHandler = (e) => {
     const entryTime = document.getElementById('event-time')
 
     const formName = document.createElement('div')
-    formName.innerHTML = `Event Name: ${entryName.value}<br><br>Description: ${entryDescription.value}<br><br>${entryTime}`;
+    formName.innerHTML = `Event Name: ${entryName.value}<br><br>Description: ${entryDescription.value}<br><br>${entryTime.value}`;
     e.target.appendChild(formName)
 
-    addInstaEntry(entryName, entryDescription, entryTime)
+    addInstaEntry(entryName.value, entryDescription.value, entryTime.value)
     console.log(localStorage);
     
 }
