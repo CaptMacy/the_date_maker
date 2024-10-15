@@ -1,5 +1,5 @@
 import './insta_entry.css'
-import { addInstaEntry } from '/modules/storage-helper.js'
+import { addInstaEntry, buildInstaEntries } from '/modules/storage-helper.js'
 export { entryFormDisplayHelper }
 
 export function loadInstaEntries() {
@@ -38,18 +38,19 @@ const entryFormDataHandler = (e) => {
     const entryName = document.getElementById('event-name')
     const entryDescription = document.getElementById('event-description')
     const entryTime = document.getElementById('event-time')
+    const parentElement = document.getElementById(e.target.id)
 
-    const formName = document.createElement('div')
-    formName.innerHTML = `Event Name: ${entryName.value}<br><br>Description: ${entryDescription.value}<br><br>${entryTime.value}`;
-    e.target.appendChild(formName)
-
-    addInstaEntry(entryName.value, entryDescription.value, entryTime.value)
-    console.log(localStorage);
-    
+    addInstaEntry(entryName.value, entryDescription.value, entryTime.value, parentElement.id)
 }
+
 
 const buildInstaEntryForm = async() => {
     await loadInstaEntries();
+    
+    buildInstaEntries()
+
 }
 
-buildInstaEntryForm()
+document.addEventListener('DOMContentLoaded', () => {
+    buildInstaEntryForm()
+});

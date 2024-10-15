@@ -1,16 +1,20 @@
 import { v4 as uniqueId } from 'uuid';
 
 export { addInstaEntry }
-
+export { buildInstaEntries }
 
 const storageLocker = JSON.parse(localStorage.getItem('data')) || [];
 let currentEntry = {}
 
-const addInstaEntry = (name, description, time) =>  {
-    const index = entryIdCheck(currentEntry.id) // returns -1 if not match is found
+const addInstaEntry = (name, description, time, parentElementId) =>  {
+    const index = entryIdCheck(currentEntry.id) // returns -1 if no match is found
+
+    console.log(index);
+    
 
     const diaryEntry = {
-        id: uniqueId,
+        parent: parentElementId,
+        id: uniqueId(),
         name: name,
         description: description,
         time: time,
@@ -21,16 +25,35 @@ const addInstaEntry = (name, description, time) =>  {
     console.log(storageLocker);
     
     localStorage.setItem('data', JSON.stringify(storageLocker))
+    buildInstaEntries();
+    reset()
 }
 
 const buildInstaEntries = () => {
-    
-    const formName = document.createElement('div')
-    formName.innerHTML = `Event Name: ${entryName.value}<br><br>Description: ${entryDescription.value}<br><br>${entryTime.value}`;
-    e.target.appendChild(formName)
+    storageLocker.forEach(({parent}) => {
+        const parentElement = document.getElementById(parent)
+        if(parentElement) parentElement.innerHTML = ''
+    })
 
-    addInstaEntry(entryName.value, entryDescription.value, entryTime.value)
-    console.log(localStorage);
+    storageLocker.forEach(({parent, id, name, description, time}) => {
+        
+        const formName = document.createElement('div')
+        formName.id = id;
+        formName.innerHTML = `Event Name: ${name}<br><br>Description: ${description}<br><br>${time}`;
+
+        console.log(parent);
+        console.log(formName);
+
+        const parentElement = document.getElementById(parent)
+        console.log(parentElement);
+        
+        parentElement.appendChild(formName)
+
+    });
+}
+
+const reset = () => {
+    currentEntry = {};
 }
 
 const entryIdCheck = (entryId) => storageLocker.findIndex((item) => item.id === entryId)
