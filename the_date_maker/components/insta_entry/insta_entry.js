@@ -48,7 +48,6 @@ const buildInstaEntryForm = async() => {
     await loadInstaEntries();
     
     buildInstaEntries()
-
 }
 
 document.addEventListener('DOMContentLoaded', () => {

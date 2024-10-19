@@ -1,5 +1,6 @@
 import './calendar.css'
 import { isWeekend, daysInMonth, currentDay } from '/modules/date-helper.js'
+import { handleSelect } from '/modules/click-handlers.js'
 import { entryFormDisplayHelper } from '/components/insta_entry/insta_entry.js'
 // import { currentHour } from '/modules/date-helper.js'
 
@@ -50,13 +51,5 @@ const buildCalanderMonthView = async() => {
 //         hourContainer.appendChild(hourElement)
 //     }
 // }
-
-const handleSelect = (event) => {
-    const selectedElement = document.querySelector('.selected');
-
-    if(selectedElement) selectedElement.classList.remove('selected');
-
-    event.target.classList.add('selected');
-}
 
 buildCalanderMonthView();

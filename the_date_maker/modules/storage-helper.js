@@ -1,4 +1,5 @@
 import { v4 as uniqueId } from 'uuid';
+import { handleSelect } from '/modules/click-handlers.js'
 
 export { addInstaEntry }
 export { buildInstaEntries }
@@ -11,7 +12,6 @@ const addInstaEntry = (name, description, time, parentElementId) =>  {
 
     console.log(index);
     
-
     const diaryEntry = {
         parent: parentElementId,
         id: uniqueId(),
@@ -22,33 +22,33 @@ const addInstaEntry = (name, description, time, parentElementId) =>  {
 
     if(index == -1) storageLocker.unshift(diaryEntry)
     
-    console.log(storageLocker);
-    
     localStorage.setItem('data', JSON.stringify(storageLocker))
-    buildInstaEntries();
+
+    const enrtyContent = document.createElement('div')
+    enrtyContent.classList.add('entry');
+    enrtyContent.id = diaryEntry.id;
+    
+    enrtyContent.innerHTML = `Event Name: ${name}<br><br>Description: ${description}<br><br>${time}`;
+
+    const parentElement = document.getElementById(parentElementId)
+    parentElement.appendChild(enrtyContent)
+    enrtyContent.addEventListener('click', handleSelect)
+
     reset()
 }
 
 const buildInstaEntries = () => {
-    storageLocker.forEach(({parent}) => {
-        const parentElement = document.getElementById(parent)
-        if(parentElement) parentElement.innerHTML = ''
-    })
-
+    //put together the event div and get parent element to append
     storageLocker.forEach(({parent, id, name, description, time}) => {
         
-        const formName = document.createElement('div')
-        formName.id = id;
-        formName.innerHTML = `Event Name: ${name}<br><br>Description: ${description}<br><br>${time}`;
-
-        console.log(parent);
-        console.log(formName);
+        const enrtyContent = document.createElement('div')
+        enrtyContent.classList.add('entry');
+        enrtyContent.id = id;
+        enrtyContent.innerHTML = `Event Name: ${name}<br><br>Description: ${description}<br><br>${time}`;
 
         const parentElement = document.getElementById(parent)
-        console.log(parentElement);
-        
-        parentElement.appendChild(formName)
-
+        parentElement.appendChild(enrtyContent)
+        enrtyContent.addEventListener('click', handleSelect)
     });
 }
 

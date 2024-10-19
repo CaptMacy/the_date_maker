@@ -15,3 +15,8 @@
     left: calc(50% - 12.5rem);
     background-color: black;
 }
+
+.entry {
+    overflow: hidden;
+    height: 3rem;
+}
