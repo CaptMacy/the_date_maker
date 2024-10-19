@@ -26,7 +26,7 @@
     transition: background-color 200ms, color 200ms;
 }
 
-.day-of-week:hover {
+.day-of-week:hover:not(.selected) {
     outline: 4px auto -webkit-focus-ring-color;
 }
 
@@ -66,6 +66,11 @@
  }
 
 .currentDay {
+    background-color: aqua;
+    color: black;
+}
+
+.currentDay.selected {
     background-color: aqua;
     color: black;
 }

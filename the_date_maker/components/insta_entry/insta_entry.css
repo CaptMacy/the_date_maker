@@ -20,3 +20,11 @@
     overflow: hidden;
     height: 3rem;
 }
+
+.event-widget {
+    background-color: black;
+    box-shadow: 0px 0px 20px 5px black;
+    position: absolute;
+    width: fit-content;
+    height: fit-content;
+}

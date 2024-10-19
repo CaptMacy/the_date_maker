@@ -1,5 +1,5 @@
 import { v4 as uniqueId } from 'uuid';
-import { handleSelect } from '/modules/click-handlers.js'
+import { handleSelect, handleEventWidget } from '/modules/click-handlers.js'
 
 export { addInstaEntry }
 export { buildInstaEntries }
@@ -33,6 +33,7 @@ const addInstaEntry = (name, description, time, parentElementId) =>  {
     const parentElement = document.getElementById(parentElementId)
     parentElement.appendChild(enrtyContent)
     enrtyContent.addEventListener('click', handleSelect)
+    enrtyContent.addEventListener('click', handleEventWidget)
 
     reset()
 }
@@ -49,7 +50,8 @@ const buildInstaEntries = () => {
         const parentElement = document.getElementById(parent)
         parentElement.appendChild(enrtyContent)
         enrtyContent.addEventListener('click', handleSelect)
-    });
+        enrtyContent.addEventListener('click', handleEventWidget)
+});
 }
 
 const reset = () => {
