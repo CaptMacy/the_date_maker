@@ -51,7 +51,7 @@ const buildInstaEntries = () => {
         parentElement.appendChild(enrtyContent)
         enrtyContent.addEventListener('click', handleSelect)
         enrtyContent.addEventListener('click', handleEventWidget)
-});
+    });
 }
 
 const reset = () => {

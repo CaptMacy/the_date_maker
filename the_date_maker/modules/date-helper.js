@@ -7,6 +7,7 @@ export { updateMonthDisplay }
 
 import { handleSelect } from '/modules/click-handlers.js'
 import { entryFormDisplayHelper } from '/components/insta_entry/insta_entry.js'
+import { buildInstaEntries } from '/modules/storage-helper.js'
 
 const isWeekend = (day) => day % 7 == 6 || day % 7 == 0;
 
@@ -16,10 +17,10 @@ const currentDay = new Date().getDate();
 
 const currentHour = new Date().getHours();
 
-const daysInMonth = (year, month) => {
+function daysInMonth(year, month, isFirstLoad) {
     if(year == null && month == null) {
-        month = new Date().getMonth() + 1;
-        year = new Date().getFullYear()
+        month = currentDate.getMonth() + 1;
+        year = currentDate.getFullYear()
     }
     
     const days = new Date(year, month, 0).getDate()
@@ -47,6 +48,8 @@ const daysInMonth = (year, month) => {
 
         if(day == currentDay) dayElement.classList.add('currentDay');
     }
+
+    if(!isFirstLoad) buildInstaEntries()
 }
 
 function updateMonthDisplay() {

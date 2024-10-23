@@ -19,7 +19,7 @@ export function loadCalendar() {
 const begin = async() => {
     await loadCalendar();
 
-    daysInMonth();
+    daysInMonth(null, null, true);
 }
 
 // const buildCalendar = () => {
