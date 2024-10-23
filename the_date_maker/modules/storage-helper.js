@@ -41,16 +41,19 @@ const addInstaEntry = (name, description, time, parentElementId) =>  {
 const buildInstaEntries = () => {
     //put together the event div and get parent element to append
     storageLocker.forEach(({parent, id, name, description, time}) => {
-        
-        const enrtyContent = document.createElement('div')
-        enrtyContent.classList.add('entry');
-        enrtyContent.id = id;
-        enrtyContent.innerHTML = `Event Name: ${name}<br><br>Description: ${description}<br><br>${time}`;
-
-        const parentElement = document.getElementById(parent)
-        parentElement.appendChild(enrtyContent)
-        enrtyContent.addEventListener('click', handleSelect)
-        enrtyContent.addEventListener('click', handleEventWidget)
+        try {
+            const enrtyContent = document.createElement('div')
+            enrtyContent.classList.add('entry');
+            enrtyContent.id = id;
+            enrtyContent.innerHTML = `Event Name: ${name}<br><br>Description: ${description}<br><br>${time}`;
+    
+            const parentElement = document.getElementById(parent)
+            parentElement.appendChild(enrtyContent)
+            enrtyContent.addEventListener('click', handleSelect)
+            enrtyContent.addEventListener('click', handleEventWidget)
+        } catch(e) {
+            console.log('hello', e)
+        }
     });
 }
 

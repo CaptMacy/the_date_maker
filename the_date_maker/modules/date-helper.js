@@ -38,8 +38,6 @@ function daysInMonth(year, month, isFirstLoad) {
         dayElement.classList.add('day-of-week')
         weekend ? dayElement.classList.add('weekend-highlight') : '';
         dayElement.textContent = day;
-    
-        console.log(dayElement.id);
         
         calendar.appendChild(dayElement);
 
@@ -61,14 +59,14 @@ function updateMonthDisplay() {
 }
 
 const handleDateChange = (event) => {
-    // event.target.id == 'date-last' ? currentDate.setMonth(currentDate.getMonth() - 1) : currentDate.setMonth(currentDate.getMonth() + 1);
+    event.target.id == 'date-last' ? currentDate.setMonth(currentDate.getMonth() - 1) : currentDate.setMonth(currentDate.getMonth() + 1);
 
-    if(event.target.id == 'date-last') {
-        currentDate.setMonth(currentDate.getMonth() - 1)
+    // if(event.target.id == 'date-last') {
+    //     currentDate.setMonth(currentDate.getMonth() - 1)
         
-    } else {
-        currentDate.setMonth(currentDate.getMonth() + 1)
-    }
+    // } else {
+    //     currentDate.setMonth(currentDate.getMonth() + 1)
+    // }
 
     updateMonthDisplay();
     
