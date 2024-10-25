@@ -18,8 +18,8 @@
 }
 
 .day-of-week {
-    border-bottom: 1px solid #fff;
-    border-right: 1px solid #fff;
+    border-bottom: 1px solid var(--calendar-border);
+    border-right: 1px solid var(--calendar-border);
     text-align: center;
     padding-top: 5px;
     cursor: pointer;
@@ -31,15 +31,15 @@
 }
 
 :nth-child(-n +7 of div.day-of-week) {
-    border-top: 1px solid #fff;
+    border-top: 1px solid var(--calendar-border);
 }
 
 :nth-child(-n +7 of div.day-of-week):hover {
-    border-top: 2px solid #fff;
+    border-top: 2px solid var(--calendar-border);
 }
 
 :nth-child(-n +7 of div.day-of-week).selected {
-    border-top: 4px solid aqua;
+    border-top: 4px solid var(--highlight);
 }
 
 .weekend-highlight {
@@ -47,31 +47,31 @@
 }
 
 .day-of-week:hover.selected {
-    outline: 2px solid aqua;
+    outline: 2px solid var(--highlight);
 }
 
 .day-of-week.selected {
-    border: 4px solid aqua;
-    color: aqua;
+    border: 4px solid var(--highlight);
+    color: var(--highlight);
 }
 
 .day-of-week:has(.selected) {
-    border: 4px solid aqua;
-    color: aqua;
+    border: 4px solid var(--highlight);
+    color: var(--highlight);
 }
 
 .entry.selected {
     border: 2px solid rgb(6, 199, 32);
-    color: aqua;
+    color: var(--highlight);
  }
 
 .currentDay {
-    background-color: aqua;
+    background-color: var(--highlight);
     color: black;
 }
 
 .currentDay.selected {
-    background-color: aqua;
+    background-color: var(--highlight);
     color: black;
 }
 

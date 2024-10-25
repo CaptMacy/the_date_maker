@@ -61,13 +61,6 @@ function updateMonthDisplay() {
 const handleDateChange = (event) => {
     event.target.id == 'date-last' ? currentDate.setMonth(currentDate.getMonth() - 1) : currentDate.setMonth(currentDate.getMonth() + 1);
 
-    // if(event.target.id == 'date-last') {
-    //     currentDate.setMonth(currentDate.getMonth() - 1)
-        
-    // } else {
-    //     currentDate.setMonth(currentDate.getMonth() + 1)
-    // }
-
     updateMonthDisplay();
     
     daysInMonth(currentDate.getFullYear(), currentDate.getMonth() + 1);

@@ -5,7 +5,10 @@
 
   color-scheme: light dark;
   color: rgba(255, 255, 255, 0.87);
-  background-color: #242424;
+  --bg-color: #242424;
+  --highlight: aqua;
+  --calendar-border: white;
+  --header-main: #212121;
 
   font-synthesis: none;
   text-rendering: optimizeLegibility;
@@ -14,6 +17,7 @@
 }
 
 body {
+  background-color: var(--bg-color);
   margin: 0;
   display: flex;
   place-items: center;
