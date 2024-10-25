@@ -3,6 +3,9 @@ import { handleSelect, handleEventWidget } from '/modules/click-handlers.js'
 
 export { addInstaEntry }
 export { buildInstaEntries }
+export { deleteEntry }
+export { editEntry }
+export { updateEntry }
 
 const storageLocker = JSON.parse(localStorage.getItem('data')) || [];
 let currentEntry = {}
@@ -27,7 +30,6 @@ const addInstaEntry = (name, description, time, parentElementId) =>  {
     const enrtyContent = document.createElement('div')
     enrtyContent.classList.add('entry');
     enrtyContent.id = diaryEntry.id;
-    
     enrtyContent.innerHTML = `Event Name: ${name}<br><br>Description: ${description}<br><br>${time}`;
 
     const parentElement = document.getElementById(parentElementId)
@@ -38,6 +40,7 @@ const addInstaEntry = (name, description, time, parentElementId) =>  {
     reset()
 }
 
+// only called on first load
 const buildInstaEntries = () => {
     //put together the event div and get parent element to append
     storageLocker.forEach(({parent, id, name, description, time}) => {
@@ -59,6 +62,26 @@ const buildInstaEntries = () => {
 
 const reset = () => {
     currentEntry = {};
+}
+
+const deleteEntry = (entry) => {
+    const index = entryIdCheck(entry.id);
+
+    entry.remove();
+    // at array index 'index' , remove 1 item (which is the entryelement)
+    storageLocker.splice(index, 1);
+    localStorage.setItem('data', JSON.stringify(storageLocker));
+}
+
+const editEntry = () => {
+    const index = entryIdCheck(entry.id);
+
+    currentEntry = storageLocker[index];
+}
+
+const updateEntry = () => {
+    const index = entryIdCheck(currentEntry.id);
+
 }
 
 const entryIdCheck = (entryId) => storageLocker.findIndex((item) => item.id === entryId)

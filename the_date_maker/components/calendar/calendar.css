@@ -75,6 +75,9 @@
     color: black;
 }
 
+.event-widget i {
+    margin: 0 20px;
+}
 
 /* Day View Styles*/
 /* #calendar-day-view {

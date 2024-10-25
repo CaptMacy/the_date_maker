@@ -1,6 +1,8 @@
 export { handleSelect }
 export { handleEventWidget }
 
+import { deleteEntry } from '/modules/storage-helper.js'
+
 const handleSelect = (event) => {
     const selectedElement = document.querySelector('.selected');
     if(selectedElement) selectedElement.classList.remove('selected');
@@ -11,28 +13,21 @@ const handleSelect = (event) => {
 let currentWidget = null;
 
 const handleEventWidget = (event) => {
-
     const eventElement = document.getElementById(event.target.id)
 
     const rect = event.target.getBoundingClientRect()
 
     const eventWidget = document.createElement('div')
-    eventWidget.innerHTML = event.target.innerHTML
+    eventWidget.innerHTML = event.target.innerHTML + `<br> <i class='bx bxs-edit-alt' id='edit-btn'></i>
+    <i class='bx bxs-trash' id='delete-btn'></i>
+    <i class='bx bx-upload' id='update-btn'></i>`
     eventWidget.classList.add('event-widget')
     eventWidget.style.left = `${rect.right - 100}px`
     eventWidget.style.top = `${rect.top - 60}px `
     eventWidget.id = event.target.id;
-
-    console.log(1);
-    console.log(currentWidget);
-    console.log(eventWidget);
     
     if(currentWidget && currentWidget !== eventWidget) currentWidget.style.display = 'none';
     else if(currentWidget == eventWidget) return;
-    
-    console.log(2);
-    console.log(currentWidget === eventWidget);
-    console.log(eventWidget);
 
     eventElement.appendChild(eventWidget)
     
@@ -40,6 +35,8 @@ const handleEventWidget = (event) => {
 
     document.removeEventListener('click', hideEventWidget)
     document.addEventListener('click', hideEventWidget)
+
+    eventWidget.querySelector('#delete-btn').addEventListener('click', () => deleteEntry(eventElement));
 
     function hideEventWidget(e) {
         // Log clicked element for debugging
