@@ -1,5 +1,6 @@
 import { v4 as uniqueId } from 'uuid';
 import { handleSelect, handleEventWidget } from '/modules/click-handlers.js'
+import { entryFormDisplayHelper } from '/components/insta_entry/insta_entry.js'
 
 export { addInstaEntry }
 export { buildInstaEntries }
@@ -23,7 +24,7 @@ const addInstaEntry = (name, description, time, parentElementId) =>  {
         time: time,
     }
 
-    if(index == -1) storageLocker.unshift(diaryEntry)
+    if(index === -1) storageLocker.unshift(diaryEntry)
     
     localStorage.setItem('data', JSON.stringify(storageLocker))
 
@@ -40,10 +41,11 @@ const addInstaEntry = (name, description, time, parentElementId) =>  {
     reset()
 }
 
-// only called on first load
 const buildInstaEntries = () => {
     //put together the event div and get parent element to append
     storageLocker.forEach(({parent, id, name, description, time}) => {
+        const parentElement = document.getElementById(parent)
+        parentElement.innerHTML = '';
         try {
             const enrtyContent = document.createElement('div')
             enrtyContent.classList.add('entry');
@@ -73,10 +75,23 @@ const deleteEntry = (entry) => {
     localStorage.setItem('data', JSON.stringify(storageLocker));
 }
 
-const editEntry = () => {
+const editEntry = (entry) => {
     const index = entryIdCheck(entry.id);
 
     currentEntry = storageLocker[index];
+
+    console.log(2, entry.id);
+
+    storageLocker[index] = {
+        ...entryFormDisplayHelper(entry.id),
+        name: entryName.value,
+        description: entryDescription.value,
+        time: entryTime.value,
+    }
+
+    localStorage.setItem('data', JSON.stringify(storageLocker));
+    buildInstaEntries();
+    reset();
 }
 
 const updateEntry = () => {

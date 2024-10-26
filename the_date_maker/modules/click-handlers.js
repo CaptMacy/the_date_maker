@@ -1,7 +1,7 @@
 export { handleSelect }
 export { handleEventWidget }
 
-import { deleteEntry } from '/modules/storage-helper.js'
+import { deleteEntry, editEntry } from '/modules/storage-helper.js'
 
 const handleSelect = (event) => {
     const selectedElement = document.querySelector('.selected');
@@ -19,8 +19,7 @@ const handleEventWidget = (event) => {
 
     const eventWidget = document.createElement('div')
     eventWidget.innerHTML = event.target.innerHTML + `<br> <i class='bx bxs-edit-alt' id='edit-btn'></i>
-    <i class='bx bxs-trash' id='delete-btn'></i>
-    <i class='bx bx-upload' id='update-btn'></i>`
+    <i class='bx bxs-trash' id='delete-btn'></i>`
     eventWidget.classList.add('event-widget')
     eventWidget.style.left = `${rect.right - 100}px`
     eventWidget.style.top = `${rect.top - 60}px `
@@ -37,11 +36,9 @@ const handleEventWidget = (event) => {
     document.addEventListener('click', hideEventWidget)
 
     eventWidget.querySelector('#delete-btn').addEventListener('click', () => deleteEntry(eventElement));
+    eventWidget.querySelector('#edit-btn').addEventListener('click', () => editEntry(eventElement, eventWidget));
 
     function hideEventWidget(e) {
-        // Log clicked element for debugging
-        console.log('Clicked element:', e.target);
-
         // Check if the clicked element is not the widget and not a child of the widget
         if (!eventWidget.contains(e.target) && e.target.id !== eventWidget.id) {
             eventWidget.style.display = 'none'; // Hide the widget

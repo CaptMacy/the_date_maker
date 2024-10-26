@@ -15,10 +15,11 @@ const entryFormDisplayHelper = (event) => {
     const formBody = document.querySelector('body')
     const entryForm = document.querySelector('.insta-entry-form')
 
+    console.log('helper', event);
+    
     entryForm.classList.toggle('active')
 
     const handleClose = (e) => {
-        console.log(e.key);
         if(e.key == 'Escape') {
             entryForm.classList.remove('active')
             formBody.removeEventListener('keydown', handleClose)
@@ -38,8 +39,15 @@ const entryFormDataHandler = (e) => {
     const entryName = document.getElementById('event-name')
     const entryDescription = document.getElementById('event-description')
     const entryTime = document.getElementById('event-time')
-    const parentElement = document.getElementById(e.target.id)
-
+    console.log('handler', e.target);
+    
+    if(e.target === undefined) {
+        var parentElement = document.getElementById(e.id)
+        return (entryName.value, entryDescription.value, entryTime.value, parentElement.id)
+    } else {
+        parentElement = document.getElementById(e.target.id)
+    }
+    
     addInstaEntry(entryName.value, entryDescription.value, entryTime.value, parentElement.id)
 }
 
