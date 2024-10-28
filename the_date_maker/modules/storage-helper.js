@@ -24,7 +24,7 @@ const addInstaEntry = (name, description, time, parentElementId) =>  {
         time: time,
     }
 
-    if(index === -1) storageLocker.unshift(diaryEntry)
+    if(index === -1) storageLocker.unshift(diaryEntry) 
     
     localStorage.setItem('data', JSON.stringify(storageLocker))
 
@@ -44,8 +44,6 @@ const addInstaEntry = (name, description, time, parentElementId) =>  {
 const buildInstaEntries = () => {
     //put together the event div and get parent element to append
     storageLocker.forEach(({parent, id, name, description, time}) => {
-        const parentElement = document.getElementById(parent)
-        parentElement.innerHTML = '';
         try {
             const enrtyContent = document.createElement('div')
             enrtyContent.classList.add('entry');
@@ -62,8 +60,16 @@ const buildInstaEntries = () => {
     });
 }
 
-const reset = () => {
-    currentEntry = {};
+const updateEntries = () => {
+    const entryToUpdate = document.getElementById(currentEntry.id)
+    entryToUpdate.innerHTML = `Event Name: ${currentEntry.name}<br><br>Description: ${currentEntry.description}<br><br>${currentEntry.time}`;
+    entryToUpdate.style.display = 'none';
+    setTimeout(() => entryToUpdate.style.display = '', 0);
+
+    console.log(entryToUpdate.innerHTML);
+    
+
+    reset();
 }
 
 const deleteEntry = (entry) => {
@@ -78,25 +84,37 @@ const deleteEntry = (entry) => {
 const editEntry = (entry) => {
     const index = entryIdCheck(entry.id);
 
+    console.log(entry.id);
+    
     currentEntry = storageLocker[index];
 
-    console.log(2, entry.id);
+    console.log(currentEntry.id);
 
-    storageLocker[index] = {
-        ...entryFormDisplayHelper(entry.id),
-        name: entryName.value,
-        description: entryDescription.value,
-        time: entryTime.value,
-    }
-
-    localStorage.setItem('data', JSON.stringify(storageLocker));
-    buildInstaEntries();
-    reset();
+    entryFormDisplayHelper();
 }
 
-const updateEntry = () => {
+const updateEntry = (newName, newDescription, newTime) => {
     const index = entryIdCheck(currentEntry.id);
 
+    console.log(2);
+    console.log(currentEntry.id);
+    
+    storageLocker[index] = {
+        ...currentEntry,
+        name: newName,
+        description: newDescription,
+        time: newTime,
+    }
+
+    console.log(storageLocker[index]);
+    
+
+    localStorage.setItem('data', JSON.stringify(storageLocker));
+    updateEntries();
+}
+
+const reset = () => {
+    currentEntry = {};
 }
 
 const entryIdCheck = (entryId) => storageLocker.findIndex((item) => item.id === entryId)
