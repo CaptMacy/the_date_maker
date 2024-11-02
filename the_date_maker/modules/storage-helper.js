@@ -81,23 +81,18 @@ const deleteEntry = (entry) => {
     localStorage.setItem('data', JSON.stringify(storageLocker));
 }
 
+// sets currententry id and calls make an entry form for user to make changes
 const editEntry = (entry) => {
     const index = entryIdCheck(entry.id);
-
-    console.log(entry.id);
     
     currentEntry = storageLocker[index];
-
-    console.log(currentEntry.id);
 
     entryFormDisplayHelper();
 }
 
+// captures the correct entry to update through current entry set in edit fucntion
 const updateEntry = (newName, newDescription, newTime) => {
     const index = entryIdCheck(currentEntry.id);
-
-    console.log(2);
-    console.log(currentEntry.id);
     
     storageLocker[index] = {
         ...currentEntry,
@@ -105,9 +100,6 @@ const updateEntry = (newName, newDescription, newTime) => {
         description: newDescription,
         time: newTime,
     }
-
-    console.log(storageLocker[index]);
-    
 
     localStorage.setItem('data', JSON.stringify(storageLocker));
     updateEntries();

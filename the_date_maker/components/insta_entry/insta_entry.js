@@ -40,6 +40,7 @@ const entryFormDataHandler = (e) => {
     const entryDescription = document.getElementById('event-description')
     const entryTime = document.getElementById('event-time')
 
+    //e is undefined because it may be called through the edit function which doesnt pass an event in, if this is the case we call update entry with the new event details - see update fucntion
     if(e === undefined) {
         updateEntry(entryName.value, entryDescription.value, entryTime.value)
         return
