@@ -55,7 +55,7 @@ const buildInstaEntries = () => {
             enrtyContent.addEventListener('click', handleSelect)
             enrtyContent.addEventListener('click', handleEventWidget)
         } catch(e) {
-            console.log('hello', e)
+            console.log('an error occured', e)
         }
     });
 }
@@ -65,9 +65,6 @@ const updateEntries = () => {
     entryToUpdate.innerHTML = `Event Name: ${currentEntry.name}<br><br>Description: ${currentEntry.description}<br><br>${currentEntry.time}`;
     entryToUpdate.style.display = 'none';
     setTimeout(() => entryToUpdate.style.display = '', 0);
-
-    console.log(entryToUpdate.innerHTML);
-    
 
     reset();
 }
