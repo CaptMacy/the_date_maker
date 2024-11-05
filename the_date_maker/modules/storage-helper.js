@@ -6,7 +6,6 @@ export { addInstaEntry }
 export { buildInstaEntries }
 export { deleteEntry }
 export { editEntry }
-export { updateEntry }
 
 const storageLocker = JSON.parse(localStorage.getItem('data')) || [];
 let currentEntry = {}
@@ -23,6 +22,14 @@ const addInstaEntry = (name, description, time, parentElementId) =>  {
     }
 
     if(index === -1) storageLocker.unshift(diaryEntry) 
+        else {
+            storageLocker[index] = {
+                ...currentEntry,
+                name: name,
+                description: description,
+                time: time,
+            }
+        }
     
     localStorage.setItem('data', JSON.stringify(storageLocker))
 
@@ -47,6 +54,7 @@ const buildInstaEntries = () => {
             parentElement.appendChild(enrtyContent)
             enrtyContent.addEventListener('click', handleSelect)
             enrtyContent.addEventListener('click', handleEventWidget)
+        
         } catch(e) {
             console.log('an error occured', e)
         }
@@ -63,27 +71,12 @@ const deleteEntry = (entry) => {
 }
 
 // sets currententry id and calls make an entry form for user to make changes
-const editEntry = (entry) => {
+const editEntry = (entry, parent) => {
     const index = entryIdCheck(entry.id);
-    
+
     currentEntry = storageLocker[index];
 
-    entryFormDisplayHelper();
-}
-
-// captures the correct entry to update through current entry set in edit fucntion
-const updateEntry = (newName, newDescription, newTime) => {
-    const index = entryIdCheck(currentEntry.id);
-    
-    storageLocker[index] = {
-        ...currentEntry,
-        name: newName,
-        description: newDescription,
-        time: newTime,
-    }
-
-    localStorage.setItem('data', JSON.stringify(storageLocker));
-    buildInstaEntries();
+    entryFormDisplayHelper(parent);
 }
 
 const reset = () => {

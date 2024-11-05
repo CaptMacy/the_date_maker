@@ -44,7 +44,7 @@ function daysInMonth(year, month, isFirstLoad) {
         if(day == currentDay) dayElement.classList.add('currentDay');
     }
 
-    if(!isFirstLoad) buildInstaEntries()
+    if(!isFirstLoad) buildInstaEntries();
 }
 
 function updateMonthDisplay() {
@@ -60,5 +60,5 @@ const handleDateChange = (event) => {
 
     updateMonthDisplay();
     
-    daysInMonth(currentDate.getFullYear(), currentDate.getMonth() + 1);
+    daysInMonth(currentDate.getFullYear(), currentDate.getMonth() + 1, false);
 }

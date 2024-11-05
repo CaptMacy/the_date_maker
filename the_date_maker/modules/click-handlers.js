@@ -15,6 +15,8 @@ let currentWidget = null;
 const handleEventWidget = (event) => {
     const eventElement = document.getElementById(event.target.id)
 
+    const parent = event.currentTarget.parentElement;
+
     const rect = event.target.getBoundingClientRect()
 
     const eventWidget = document.createElement('div')
@@ -36,7 +38,7 @@ const handleEventWidget = (event) => {
     document.addEventListener('click', hideEventWidget)
 
     eventWidget.querySelector('#delete-btn').addEventListener('click', () => deleteEntry(eventElement));
-    eventWidget.querySelector('#edit-btn').addEventListener('click', () => editEntry(eventElement, eventWidget));
+    eventWidget.querySelector('#edit-btn').addEventListener('click', () => editEntry(eventElement, parent));
 
     function hideEventWidget(e) {
         // Check if the clicked element is not the widget and not a child of the widget

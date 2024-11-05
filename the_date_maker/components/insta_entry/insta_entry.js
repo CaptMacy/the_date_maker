@@ -1,5 +1,5 @@
 import './insta_entry.css'
-import { addInstaEntry, buildInstaEntries, updateEntry } from '/modules/storage-helper.js'
+import { addInstaEntry, buildInstaEntries } from '/modules/storage-helper.js'
 export { entryFormDisplayHelper }
 
 export function loadInstaEntries() {
@@ -37,15 +37,10 @@ const entryFormDataHandler = (e) => {
     const entryName = document.getElementById('event-name')
     const entryDescription = document.getElementById('event-description')
     const entryTime = document.getElementById('event-time')
-
-    //e is undefined because it may be called through the edit function which doesnt pass an event in, 
-    //if this is the case we call update entry with the new event details - see update fucntion
-    if(e === undefined) {
-        updateEntry(entryName.value, entryDescription.value, entryTime.value)
-        return
-    }
     
-    const parentElement = document.getElementById(e.target.id)
+    //e.target is undefined its because it was sent through the edit function that pulls the id from the "handleEventWidget", becasue the eleemnt is passed around we cant use .target and event becomes a varaible holding an element
+    if(e.target === undefined) var parentElement = e; 
+    else parentElement = document.getElementById(e.target.id)
     
     addInstaEntry(entryName.value, entryDescription.value, entryTime.value, parentElement.id)
 }
