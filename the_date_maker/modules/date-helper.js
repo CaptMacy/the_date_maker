@@ -1,7 +1,4 @@
-export { isWeekend }
 export { daysInMonth }
-export { currentDay }
-export { currentHour }
 export { handleDateChange }
 export { updateMonthDisplay }
 

@@ -14,8 +14,6 @@ let currentEntry = {}
 const addInstaEntry = (name, description, time, parentElementId) =>  {
     const index = entryIdCheck(currentEntry.id) // returns -1 if no match is found
 
-    console.log(index);
-    
     const diaryEntry = {
         parent: parentElementId,
         id: uniqueId(),
@@ -28,15 +26,7 @@ const addInstaEntry = (name, description, time, parentElementId) =>  {
     
     localStorage.setItem('data', JSON.stringify(storageLocker))
 
-    const enrtyContent = document.createElement('div')
-    enrtyContent.classList.add('entry');
-    enrtyContent.id = diaryEntry.id;
-    enrtyContent.innerHTML = `Event Name: ${name}<br><br>Description: ${description}<br><br>${time}`;
-
-    const parentElement = document.getElementById(parentElementId)
-    parentElement.appendChild(enrtyContent)
-    enrtyContent.addEventListener('click', handleSelect)
-    enrtyContent.addEventListener('click', handleEventWidget)
+    buildInstaEntries();
 
     reset()
 }
@@ -45,6 +35,9 @@ const buildInstaEntries = () => {
     //put together the event div and get parent element to append
     storageLocker.forEach(({parent, id, name, description, time}) => {
         try {
+            const currentEntries = document.getElementById(id);
+            if(currentEntries != null) currentEntries.remove()
+
             const enrtyContent = document.createElement('div')
             enrtyContent.classList.add('entry');
             enrtyContent.id = id;
@@ -58,15 +51,6 @@ const buildInstaEntries = () => {
             console.log('an error occured', e)
         }
     });
-}
-
-const updateEntries = () => {
-    const entryToUpdate = document.getElementById(currentEntry.id)
-    entryToUpdate.innerHTML = `Event Name: ${currentEntry.name}<br><br>Description: ${currentEntry.description}<br><br>${currentEntry.time}`;
-    entryToUpdate.style.display = 'none';
-    setTimeout(() => entryToUpdate.style.display = '', 0);
-
-    reset();
 }
 
 const deleteEntry = (entry) => {
@@ -99,7 +83,7 @@ const updateEntry = (newName, newDescription, newTime) => {
     }
 
     localStorage.setItem('data', JSON.stringify(storageLocker));
-    updateEntries();
+    buildInstaEntries();
 }
 
 const reset = () => {
