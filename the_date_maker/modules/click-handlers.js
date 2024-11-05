@@ -15,6 +15,7 @@ let currentWidget = null;
 const handleEventWidget = (event) => {
     const eventElement = document.getElementById(event.target.id)
 
+    // this is exclusively used for the edit function
     const parent = event.currentTarget.parentElement;
 
     const rect = event.target.getBoundingClientRect()
