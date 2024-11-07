@@ -1,5 +1,7 @@
 export { handleSelect }
-export { handleEventWidget }
+export { handleEventPopUp }
+export { handleWeekView }
+export { handleMonthView }
 
 import { deleteEntry, editEntry } from '/modules/storage-helper.js'
 
@@ -12,7 +14,7 @@ const handleSelect = (event) => {
 
 let currentWidget = null;
 
-const handleEventWidget = (event) => {
+const handleEventPopUp = (event) => {
     const eventElement = document.getElementById(event.target.id)
 
     // this is exclusively used for the edit function
@@ -49,4 +51,19 @@ const handleEventWidget = (event) => {
             document.removeEventListener('click', hideEventWidget); // Remove listener after hiding
         }
     }
+}
+
+const handleWeekView = () => {
+    const monthView = document.getElementById('calendar-month-view');
+    const weekView = document.getElementById('calendar-week-view');
+    console.log(monthView,'hello there week view');
+    console.log(weekView,'hello there week view');
+    monthView.style.display = 'none';
+    weekView.style.display = 'grid';
+}
+
+const handleMonthView = () => {
+    const monthView = document.getElementById('calendar-month-view');
+    console.log(monthView,'hello there Month view');
+    monthView.style.display = 'grid';
 }

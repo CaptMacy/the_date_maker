@@ -79,6 +79,19 @@
     margin: 0 20px;
 }
 
+
+/* Week View Styles */
+#calendar-week-view {
+    display: none;
+    grid-template-columns: repeat(7, 1fr);
+    /* grid-template-rows: repeat(5, 1fr); */
+    color: #fff;
+    height: 100%;
+    margin: 0 auto;
+}
+
+
+
 /* Day View Styles*/
 /* #calendar-day-view {
     display: flex;
@@ -102,3 +115,4 @@
 /* #calendar-day-view:active {
     display: flex;
 } */
+

@@ -1,5 +1,5 @@
 import { v4 as uniqueId } from 'uuid';
-import { handleSelect, handleEventWidget } from '/modules/click-handlers.js'
+import { handleSelect, handleEventPopUp } from '/modules/click-handlers.js'
 import { entryFormDisplayHelper } from '/components/insta_entry/insta_entry.js'
 
 export { addInstaEntry }
@@ -53,7 +53,7 @@ const buildInstaEntries = () => {
             const parentElement = document.getElementById(parent)
             parentElement.appendChild(enrtyContent)
             enrtyContent.addEventListener('click', handleSelect)
-            enrtyContent.addEventListener('click', handleEventWidget)
+            enrtyContent.addEventListener('click', handleEventPopUp)
         
         } catch(e) {
             console.log('an error occured', e)

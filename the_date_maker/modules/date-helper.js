@@ -12,8 +12,6 @@ let currentDate = new Date();
 
 const currentDay = new Date().getDate();
 
-const currentHour = new Date().getHours();
-
 function daysInMonth(year, month, isFirstLoad) {
     if(year == null && month == null) {
         month = currentDate.getMonth() + 1;
@@ -52,7 +50,6 @@ function updateMonthDisplay() {
     
     const displayMonth = document.getElementById('display-month')
     displayMonth.innerHTML = currentDate.toLocaleDateString('en-GB', options);
-    
 }
 
 const handleDateChange = (event) => {
