@@ -17,14 +17,17 @@ const buildHeader = async() => {
 
     updateMonthDisplay();
     
-    const dateLast = document.getElementById('date-last')
-    const dateNext = document.getElementById('date-next')
-    const weekView = document.getElementById('week-btn')
-    const monthView = document.getElementById('month-btn')
-    dateLast.addEventListener('click', (event) => handleDateChange(event));
-    dateNext.addEventListener('click', (event) => handleDateChange(event));
-    weekView.addEventListener('click', (event) => handleCalendarView(event));
-    monthView.addEventListener('click', (event) => handleCalendarView(event));
+    const dateChangeBtns = document.querySelectorAll('#date-last, #date-next');
+
+    dateChangeBtns.forEach(btn => {
+        btn.addEventListener('click', (event) => handleDateChange(event));
+    });
+
+    const calendarViewOptionBtns = document.querySelectorAll('#day-btn, #week-btn, #month-btn, #year-btn')
+
+    calendarViewOptionBtns.forEach(btn => {
+        btn.addEventListener('click', (event) => handleCalendarView(event));
+    });
 }
 
 buildHeader();
