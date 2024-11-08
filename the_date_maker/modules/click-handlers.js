@@ -13,7 +13,7 @@ const handleSelect = (event) => {
 
 let currentWidget = null;
 
-const handleEventPopUp = (event) => {
+function handleEventPopUp(event) {
     const eventElement = document.getElementById(event.target.id)
 
     // this is exclusively used for the edit function
@@ -42,7 +42,7 @@ const handleEventPopUp = (event) => {
     eventWidget.querySelector('#delete-btn').addEventListener('click', () => deleteEntry(eventElement));
     eventWidget.querySelector('#edit-btn').addEventListener('click', () => editEntry(eventElement, parent));
 
-    function hideEventWidget(e) {
+    const hideEventWidget = (e) => {
         // Check if the clicked element is not the widget and not a child of the widget
         if (!eventWidget.contains(e.target) && e.target.id !== eventWidget.id) {
             eventWidget.style.display = 'none'; // Hide the widget

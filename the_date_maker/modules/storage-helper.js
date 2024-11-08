@@ -10,7 +10,7 @@ export { editEntry }
 const storageLocker = JSON.parse(localStorage.getItem('data')) || [];
 let currentEntry = {}
 
-const addInstaEntry = (name, description, time, parentElementId) =>  {
+function addInstaEntry(name, description, time, parentElementId) {
     const index = entryIdCheck(currentEntry.id) // returns -1 if no match is found
 
     const diaryEntry = {
@@ -38,7 +38,7 @@ const addInstaEntry = (name, description, time, parentElementId) =>  {
     reset()
 }
 
-const buildInstaEntries = () => {
+function buildInstaEntries() {
     //put together the event div and get parent element to append
     storageLocker.forEach(({parent, id, name, description, time}) => {
         try {
@@ -51,6 +51,7 @@ const buildInstaEntries = () => {
             enrtyContent.innerHTML = `Event Name: ${name}<br><br>Description: ${description}<br><br>${time}`;
     
             const parentElement = document.getElementById(parent)
+            if(parentElement == null) return;
             parentElement.appendChild(enrtyContent)
             enrtyContent.addEventListener('click', handleSelect)
             enrtyContent.addEventListener('click', handleEventPopUp)
