@@ -1,7 +1,6 @@
 export { handleSelect }
 export { handleEventPopUp }
-export { handleWeekView }
-export { handleMonthView }
+export { handleCalendarView }
 
 import { deleteEntry, editEntry } from '/modules/storage-helper.js'
 
@@ -53,17 +52,36 @@ const handleEventPopUp = (event) => {
     }
 }
 
-const handleWeekView = () => {
-    const monthView = document.getElementById('calendar-month-view');
-    const weekView = document.getElementById('calendar-week-view');
-    console.log(monthView,'hello there week view');
-    console.log(weekView,'hello there week view');
-    monthView.style.display = 'none';
-    weekView.style.display = 'grid';
-}
+const handleCalendarView = (event) => {
+    const viewOption = event.target.innerHTML;
 
-const handleMonthView = () => {
+    // const dayView = document.getElementById('calendar-day-view');
+    const weekView = document.getElementById('calendar-week-view');
     const monthView = document.getElementById('calendar-month-view');
-    console.log(monthView,'hello there Month view');
-    monthView.style.display = 'grid';
+    // const yearView = document.getElementById('calendar-year-view');
+    
+    // dayView.style.display = 'none';
+    weekView.style.display = 'none';
+    monthView.style.display = 'none';
+    // yearView.style.display = 'none';
+
+    switch(viewOption) {
+        case 'Day':
+            console.log('not ready yet');
+            break;
+        case 'Week':
+            weekView.style.display = 'grid';
+            console.log('week view');
+            console.log(weekView.style.display);
+            break;
+        case 'Month':
+            monthView.style.display = 'grid';
+            console.log('month view');
+            console.log(monthView.style.display);
+            break;
+        case 'Year':
+            console.log('not ready yet');
+            break;
+    }
+
 }

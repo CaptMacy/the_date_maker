@@ -1,6 +1,6 @@
 import './header.css';
 import { handleDateChange, updateMonthDisplay } from '/modules/date-helper.js'
-import { handleWeekView, handleMonthView } from '/modules/click-handlers.js'
+import { handleCalendarView } from '/modules/click-handlers.js'
 
 export function loadHeader() {
     return fetch('components/header/header.html')
@@ -23,8 +23,8 @@ const buildHeader = async() => {
     const monthView = document.getElementById('month-btn')
     dateLast.addEventListener('click', (event) => handleDateChange(event));
     dateNext.addEventListener('click', (event) => handleDateChange(event));
-    weekView.addEventListener('click', (event) => handleWeekView(event));
-    monthView.addEventListener('click', (event) => handleMonthView(event));
+    weekView.addEventListener('click', (event) => handleCalendarView(event));
+    monthView.addEventListener('click', (event) => handleCalendarView(event));
 }
 
 buildHeader();

@@ -45,6 +45,10 @@ function daysInMonth(year, month, isFirstLoad) {
     if(!isFirstLoad) buildInstaEntries();
 }
 
+function daysInWeek() {
+    
+}
+
 function updateMonthDisplay() {
     const options = { year: 'numeric', month: 'long' };
     
