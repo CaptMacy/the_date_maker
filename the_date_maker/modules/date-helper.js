@@ -47,6 +47,9 @@ function daysInMonth(year, month, isFirstLoad) {
 }
 
 const daysInWeek = () => {
+
+    const calendar = document.getElementById('calendar-week-view');
+
     currentDate.setHours(0, 0, 0, 0);
     const sunday = new Date(currentDate);
     sunday.setDate(currentDate.getDate() - currentDate.getDay());
@@ -54,8 +57,13 @@ const daysInWeek = () => {
     saturday.setDate(sunday.getDate() + 6);
 
     console.log(sunday);
-    console.log(sunday.getDate() + 1);
     console.log(saturday);
+    for(let i = 0; i < 7; i++) {
+        const day = document.createElement('div');
+        day.classList.add('week-day', 'day-of-week');
+        day.textContent = sunday;
+        calendar.appendChild(day);
+    }
 }
 
 const updateMonthDisplay = () => {

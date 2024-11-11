@@ -1,5 +1,5 @@
 import './calendar.css'
-import { daysInMonth } from '/modules/date-helper.js'
+import { daysInMonth, daysInWeek } from '/modules/date-helper.js'
 
 export function loadCalendar() {
     return fetch('components/calendar/calendar.html')
@@ -16,6 +16,7 @@ const begin = async() => {
     await loadCalendar();
 
     daysInMonth(null, null, true);
+    daysInWeek();
 }
 
 begin();

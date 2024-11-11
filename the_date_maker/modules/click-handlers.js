@@ -74,7 +74,6 @@ const handleCalendarView = (event) => {
             weekView.style.display = 'grid';
             console.log('week view');
             console.log(weekView.style.display);
-            daysInWeek();
             break;
         case 'Month':
             monthView.style.display = 'grid';
