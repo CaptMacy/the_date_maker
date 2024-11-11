@@ -1,6 +1,7 @@
 export { daysInMonth }
 export { handleDateChange }
 export { updateMonthDisplay }
+export { daysInWeek }
 
 import { handleSelect } from '/modules/click-handlers.js'
 import { entryFormDisplayHelper } from '/components/insta_entry/insta_entry.js'
@@ -46,7 +47,15 @@ function daysInMonth(year, month, isFirstLoad) {
 }
 
 const daysInWeek = () => {
-    
+    currentDate.setHours(0, 0, 0, 0);
+    const sunday = new Date(currentDate);
+    sunday.setDate(currentDate.getDate() - currentDate.getDay());
+    const saturday = new Date(sunday);
+    saturday.setDate(sunday.getDate() + 6);
+
+    console.log(sunday);
+    console.log(sunday.getDate() + 1);
+    console.log(saturday);
 }
 
 const updateMonthDisplay = () => {
