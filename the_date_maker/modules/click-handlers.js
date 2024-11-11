@@ -1,9 +1,8 @@
+import { deleteEntry, editEntry } from '/modules/storage-helper.js'
+
 export { handleSelect }
 export { handleEventPopUp }
 export { handleCalendarView }
-
-import { deleteEntry, editEntry } from '/modules/storage-helper.js'
-import { daysInWeek } from '/modules/date-helper.js'
 
 const handleSelect = (event) => {
     const selectedElement = document.querySelector('.selected');
