@@ -1,11 +1,11 @@
+import { handleSelect } from '/modules/click-handlers.js'
+import { entryFormDisplayHelper } from '/components/insta_entry/insta_entry.js'
+import { buildInstaEntries } from '/modules/storage-helper.js'
+
 export { daysInMonth }
 export { handleDateChange }
 export { updateMonthDisplay }
 export { daysInWeek }
-
-import { handleSelect } from '/modules/click-handlers.js'
-import { entryFormDisplayHelper } from '/components/insta_entry/insta_entry.js'
-import { buildInstaEntries } from '/modules/storage-helper.js'
 
 const isWeekend = (day) => day % 7 == 6 || day % 7 == 0;
 
@@ -47,8 +47,8 @@ function daysInMonth(year, month, isFirstLoad) {
 }
 
 const daysInWeek = () => {
-
     const calendar = document.getElementById('calendar-week-view');
+    const options = { weekday: 'long' };
 
     currentDate.setHours(0, 0, 0, 0);
     const sunday = new Date(currentDate);
@@ -56,13 +56,21 @@ const daysInWeek = () => {
     const saturday = new Date(sunday);
     saturday.setDate(sunday.getDate() + 6);
 
-    console.log(sunday);
-    console.log(saturday);
     for(let i = 0; i < 7; i++) {
-        const day = document.createElement('div');
-        day.classList.add('week-day', 'day-of-week');
-        day.textContent = sunday;
-        calendar.appendChild(day);
+        const dayElement = document.createElement('div');
+        dayElement.classList.add('week-day', 'day-of-week');
+
+        const day = new Date(sunday);
+        day.setDate(day.getDate() + i)
+
+        const dayName = document.createElement('span');
+        dayName.classList.add('weekDayName');
+        dayName.innerText = day.toLocaleDateString('en-GB', options) + ' ' + day.getDate();
+        dayElement.appendChild(dayName);
+
+        calendar.appendChild(dayElement);
+
+        if(day.getDate() == currentDay) dayElement.classList.add('currentDay');
     }
 }
 

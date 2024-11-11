@@ -90,6 +90,10 @@
     margin: 0 auto;
 }
 
+.weekDayName {
+    width: auto;
+    border-bottom: 1px solid var(--calendar-border);
+}
 
 
 /* Day View Styles*/
