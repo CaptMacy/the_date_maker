@@ -47,3 +47,7 @@
 .date-display-nav i:hover {
   background-color: #323232;
 }
+
+#display-week {
+  display: none;
+}

@@ -71,7 +71,6 @@ const daysInWeek = () => {
 
         if(day.getDate() == currentDay) dayElement.classList.add('currentDay');
     }
-    updateWeekDisplay();
 }
 
 const updateWeekDisplay = () => {
@@ -86,6 +85,7 @@ const updateWeekDisplay = () => {
     const sundayDate = sunday.getDate();
 
     const displayWeek = document.getElementById('display-week')
+    displayWeek.style.display = 'block';
     displayWeek.innerHTML = sunday.toLocaleDateString('en-GB', options) + ' ' + sundayDate + ' ' + '-' + ' ' + saturdayDate.toLocaleDateString('en-GB', options) + ' ' + saturdayDate.getDate();
 }
 
