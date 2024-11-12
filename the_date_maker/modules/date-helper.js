@@ -2,11 +2,12 @@ import { handleSelect } from '/modules/click-handlers.js'
 import { entryFormDisplayHelper } from '/components/insta_entry/insta_entry.js'
 import { buildInstaEntries } from '/modules/storage-helper.js'
 
+export { daysInWeek }
 export { daysInMonth }
 export { handleMonthChange }
 export { updateMonthDisplay }
+export { handleWeekChange }
 export { updateWeekDisplay }
-export { daysInWeek }
 
 const isWeekend = (day) => day % 7 == 6 || day % 7 == 0;
 
@@ -47,14 +48,17 @@ function daysInMonth(year, month, isFirstLoad) {
     if(!isFirstLoad) buildInstaEntries();
 }
 
-const daysInWeek = () => {
+const daysInWeek = (sunday) => {
     const calendar = document.getElementById('calendar-week-view');
+    calendar.innerHTML = '';
     const options = { weekday: 'long' };
 
-    currentDate.setHours(0, 0, 0, 0);
-    const sunday = new Date(currentDate);
-    sunday.setDate(currentDate.getDate() - currentDate.getDay());
-
+    if(sunday === undefined) {
+        currentDate.setHours(0, 0, 0, 0);
+        sunday = new Date(currentDate);
+        sunday.setDate(currentDate.getDate() - currentDate.getDay());
+    }
+    
     for(let i = 0; i < 7; i++) {
         const dayElement = document.createElement('div');
         dayElement.classList.add('week-day', 'day-of-week');
@@ -75,7 +79,7 @@ const daysInWeek = () => {
 
 const updateWeekDisplay = () => {
     const options = { weekday: 'long' };
-
+    
     currentDate.setHours(0, 0, 0, 0);
     const sunday = new Date(currentDate);
     sunday.setDate(currentDate.getDate() - currentDate.getDay());
@@ -85,18 +89,15 @@ const updateWeekDisplay = () => {
     const sundayDate = sunday.getDate();
 
     const displayWeek = document.getElementById('display-week')
-    displayWeek.style.display = 'block';
     displayWeek.innerHTML = sunday.toLocaleDateString('en-GB', options) + ' ' + sundayDate + ' ' + '-' + ' ' + saturdayDate.toLocaleDateString('en-GB', options) + ' ' + saturdayDate.getDate();
 }
 
 const handleWeekChange = (event) => {
-
-
-
-    event.target.id == 'date-last' ? currentDate.setMonth(currentDate.getMonth() - 1) : currentDate.setMonth(currentDate.getMonth() + 1);
+    event.target.id == 'date-last' ? currentDate.setDate(currentDate.getDate() - 1 * 7) : currentDate.setDate(currentDate.getDate() + 1 * 7);
 
     updateWeekDisplay();
-    
+
+    daysInWeek(currentDate.setDate(currentDate.getDate() - currentDate.getDay()));
 }
 
 const updateMonthDisplay = () => {
