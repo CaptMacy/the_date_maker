@@ -1,5 +1,5 @@
 import './header.css';
-import { handleMonthChange, updateMonthDisplay, handleWeekChange } from '/modules/date-helper.js'
+import { handleDateDisplayChange, updateMonthDisplay } from '/modules/date-helper.js'
 import { handleCalendarView } from '/modules/click-handlers.js'
 
 export function loadHeader() {
@@ -20,7 +20,7 @@ const buildHeader = async() => {
     const dateChangeBtns = document.querySelectorAll('#date-last, #date-next');
 
     dateChangeBtns.forEach(btn => {
-        btn.addEventListener('click', (event) => handleWeekChange(event));
+        btn.addEventListener('click', (event) => handleDateDisplayChange(event));
     });
 
     const calendarViewOptionBtns = document.querySelectorAll('#day-btn, #week-btn, #month-btn, #year-btn')

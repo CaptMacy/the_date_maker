@@ -4,10 +4,8 @@ import { buildInstaEntries } from '/modules/storage-helper.js'
 
 export { daysInWeek }
 export { daysInMonth }
-export { handleMonthChange }
 export { updateMonthDisplay }
-export { handleWeekChange }
-export { updateWeekDisplay }
+export { handleDateDisplayChange }
 
 const isWeekend = (day) => day % 7 == 6 || day % 7 == 0;
 
@@ -76,6 +74,16 @@ const daysInWeek = (sunday) => {
         if(day.getDate() == currentDay) dayElement.classList.add('currentDay');
     }
 }
+
+const handleDateDisplayChange = (event) => {
+    const dateContainer = document.getElementById('date-container');
+
+    if(dateContainer.classList.contains('week')) handleWeekChange(event);
+    else if(dateContainer.classList.contains('month')) handleMonthChange(event);
+}
+
+
+
 
 const updateWeekDisplay = () => {
     const options = { weekday: 'long' };
