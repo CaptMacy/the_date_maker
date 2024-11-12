@@ -5,6 +5,7 @@ import { buildInstaEntries } from '/modules/storage-helper.js'
 export { daysInWeek }
 export { daysInMonth }
 export { updateMonthDisplay }
+export { updateWeekDisplay }
 export { handleDateDisplayChange }
 
 const isWeekend = (day) => day % 7 == 6 || day % 7 == 0;

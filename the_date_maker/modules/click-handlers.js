@@ -1,4 +1,5 @@
 import { deleteEntry, editEntry } from '/modules/storage-helper.js'
+import { updateWeekDisplay } from '/modules/date-helper.js'
 
 export { handleSelect }
 export { handleEventPopUp }
@@ -75,12 +76,14 @@ const handleCalendarView = (event) => {
             weekView.style.display = 'grid';
             dateContainer.classList.remove('month');
             dateContainer.classList.add('week');
+            updateWeekDisplay();
             document.getElementById('display-week').style.display = 'inline-block';
             break;
         case 'Month':
             monthView.style.display = 'grid';
             dateContainer.classList.remove('week');
             dateContainer.classList.add('month');
+            document.getElementById('display-week').style.display = 'none';
             break;
         case 'Year':
             console.log('not ready yet');
