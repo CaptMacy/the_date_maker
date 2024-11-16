@@ -103,14 +103,15 @@
     grid-template-rows: repeat(24, 1fr);
     position: fixed;
     top: 6%;
-    height: 93.5vh;
+    height: 94.4vh;
     width: 5rem;
     border: solid;
     place-content: center;
+    overflow: visible;
 }
 
 #calendar-hour-sidebar > div {
-    border-bottom: 2px solid white; /* Apply borders to each row */
+    border-bottom: 2px solid white;
   }
 
 /* Day View Styles*/
