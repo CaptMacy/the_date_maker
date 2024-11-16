@@ -1,6 +1,6 @@
 import 'boxicons/css/boxicons.min.css';
 import './sidebar.css';
-import { handleSidebarWidth } from '/modules/sidebar-helper.js'
+import { handleSidebarWidth } from '/modules/sidebar-helper.js';
 
 export function loadSidebar() {
     return fetch('components/sidebar/sidebar.html')

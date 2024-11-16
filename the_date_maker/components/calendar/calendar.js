@@ -1,12 +1,12 @@
-import './calendar.css'
-import { daysInMonth, daysInWeek } from '/modules/date-helper.js'
+import './calendar.css';
+import { daysInMonth, daysInWeek } from '/modules/date-helper.js';
 
 export function loadCalendar() {
     return fetch('components/calendar/calendar.html')
         .then(response => response.text())
         .then(html => {
-            const calendar = document.getElementById('calendar-main')
-            calendar.innerHTML = html
+            const calendar = document.getElementById('calendar-main');
+            calendar.innerHTML = html;
         })
         .catch(err => console.log('failed to load calendar', err));
     }

@@ -1,12 +1,12 @@
-import { handleSelect } from '/modules/click-handlers.js'
-import { entryFormDisplayHelper } from '/components/insta_entry/insta_entry.js'
-import { buildInstaEntries } from '/modules/storage-helper.js'
+import { handleSelect } from '/modules/click-handlers.js';
+import { entryFormDisplayHelper } from '/components/insta_entry/insta_entry.js';
+import { buildInstaEntries } from '/modules/storage-helper.js';
 
-export { daysInWeek }
-export { daysInMonth }
-export { updateMonthDisplay }
-export { updateWeekDisplay }
-export { handleDateDisplayChange }
+export { daysInWeek };
+export { daysInMonth };
+export { updateMonthDisplay };
+export { updateWeekDisplay };
+export { handleDateDisplayChange };
 
 const isWeekend = (day) => day % 7 == 6 || day % 7 == 0;
 
@@ -17,10 +17,10 @@ const currentDay = new Date().getDate();
 function daysInMonth(year, month, isFirstLoad) {
     if(year == null && month == null) {
         month = currentDate.getMonth() + 1;
-        year = currentDate.getFullYear()
+        year = currentDate.getFullYear();
     }
     
-    const days = new Date(year, month, 0).getDate()
+    const days = new Date(year, month, 0).getDate();
     const divId = `${month}${year}`;
 
     const calendar = document.getElementById('calendar-month-view');
@@ -63,7 +63,7 @@ const daysInWeek = (sunday) => {
         dayElement.classList.add('week-day', 'day-of-week');
 
         const day = new Date(sunday);
-        day.setDate(day.getDate() + i)
+        day.setDate(day.getDate() + i);
 
         const dayName = document.createElement('span');
         dayName.classList.add('weekDayName');
@@ -95,7 +95,7 @@ const updateWeekDisplay = () => {
     saturdayDate.setDate(sunday.getDate() + 6);
     const sundayDate = sunday.getDate();
 
-    const displayWeek = document.getElementById('display-week')
+    const displayWeek = document.getElementById('display-week');
     displayWeek.innerHTML = sunday.toLocaleDateString('en-GB', options) + ' ' + sundayDate + ' ' + '-' + ' ' + saturdayDate.toLocaleDateString('en-GB', options) + ' ' + saturdayDate.getDate();
 }
 
@@ -110,7 +110,7 @@ const handleWeekChange = (event) => {
 const updateMonthDisplay = () => {
     const options = { year: 'numeric', month: 'long' };
     
-    const displayMonth = document.getElementById('display-month')
+    const displayMonth = document.getElementById('display-month');
     displayMonth.innerHTML = currentDate.toLocaleDateString('en-GB', options);
 }
 

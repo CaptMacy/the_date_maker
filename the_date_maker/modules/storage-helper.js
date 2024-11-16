@@ -1,17 +1,17 @@
 import { v4 as uniqueId } from 'uuid';
-import { handleSelect, handleEventPopUp } from '/modules/click-handlers.js'
-import { entryFormDisplayHelper } from '/components/insta_entry/insta_entry.js'
+import { handleSelect, handleEventPopUp } from '/modules/click-handlers.js';
+import { entryFormDisplayHelper } from '/components/insta_entry/insta_entry.js';
 
-export { addInstaEntry }
-export { buildInstaEntries }
-export { deleteEntry }
-export { editEntry }
+export { addInstaEntry };
+export { buildInstaEntries };
+export { deleteEntry };
+export { editEntry };
 
 const storageLocker = JSON.parse(localStorage.getItem('data')) || [];
-let currentEntry = {}
+let currentEntry = {};
 
 function addInstaEntry(name, description, time, parentElementId) {
-    const index = entryIdCheck(currentEntry.id) // returns -1 if no match is found
+    const index = entryIdCheck(currentEntry.id); // returns -1 if no match is found
 
     const diaryEntry = {
         parent: parentElementId,
@@ -19,9 +19,9 @@ function addInstaEntry(name, description, time, parentElementId) {
         name: name,
         description: description,
         time: time,
-    }
+    };
 
-    if(index === -1) storageLocker.unshift(diaryEntry) 
+    if(index === -1) storageLocker.unshift(diaryEntry) ;
         else {
             storageLocker[index] = {
                 ...currentEntry,
@@ -29,13 +29,13 @@ function addInstaEntry(name, description, time, parentElementId) {
                 description: description,
                 time: time,
             }
-        }
+        };
     
-    localStorage.setItem('data', JSON.stringify(storageLocker))
+    localStorage.setItem('data', JSON.stringify(storageLocker));
 
     buildInstaEntries();
 
-    reset()
+    reset();
 }
 
 function buildInstaEntries() {
@@ -43,21 +43,21 @@ function buildInstaEntries() {
     storageLocker.forEach(({parent, id, name, description, time}) => {
         try {
             const currentEntries = document.getElementById(id);
-            if(currentEntries != null) currentEntries.remove()
+            if(currentEntries != null) currentEntries.remove();
 
-            const enrtyContent = document.createElement('div')
+            const enrtyContent = document.createElement('div');
             enrtyContent.classList.add('entry');
             enrtyContent.id = id;
             enrtyContent.innerHTML = `Event Name: ${name}<br><br>Description: ${description}<br><br>${time}`;
     
-            const parentElement = document.getElementById(parent)
+            const parentElement = document.getElementById(parent);
             if(parentElement == null) return;
-            parentElement.appendChild(enrtyContent)
-            enrtyContent.addEventListener('click', handleSelect)
-            enrtyContent.addEventListener('click', handleEventPopUp)
+            parentElement.appendChild(enrtyContent);
+            enrtyContent.addEventListener('click', handleSelect);
+            enrtyContent.addEventListener('click', handleEventPopUp);
         
         } catch(e) {
-            console.log('an error occured', e)
+            console.log('an error occured', e);
         }
     });
 }
@@ -84,4 +84,4 @@ const reset = () => {
     currentEntry = {};
 }
 
-const entryIdCheck = (entryId) => storageLocker.findIndex((item) => item.id === entryId)
+const entryIdCheck = (entryId) => storageLocker.findIndex((item) => item.id === entryId);

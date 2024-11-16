@@ -1,4 +1,4 @@
-export { handleSidebarWidth }
+export { handleSidebarWidth };
 
 const handleSidebarWidth = (sidebar) => {
     const calendarMain = document.getElementById('calendar-main');
