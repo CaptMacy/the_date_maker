@@ -83,11 +83,13 @@
 /* Week View Styles */
 #calendar-week-view {
     display: none;
+    position: absolute;
     grid-template-columns: repeat(7, 1fr);
-    /* grid-template-rows: repeat(5, 1fr); */
     color: #fff;
     height: 100%;
     margin: 0 auto;
+    left: 86px;
+    width: calc(100% - 86px);
 }
 
 .weekDayName {
@@ -95,6 +97,21 @@
     border-bottom: 1px solid var(--calendar-border);
 }
 
+#calendar-hour-sidebar {
+    display: none;
+    color: #fff;
+    grid-template-rows: repeat(24, 1fr);
+    position: fixed;
+    top: 6%;
+    height: 93.5vh;
+    width: 5rem;
+    border: solid;
+    place-content: center;
+}
+
+#calendar-hour-sidebar > div {
+    border-bottom: 2px solid white; /* Apply borders to each row */
+  }
 
 /* Day View Styles*/
 /* #calendar-day-view {

@@ -57,12 +57,14 @@ const handleCalendarView = (event) => {
     const viewOption = event.target.innerHTML;
 
     const dateContainer = document.getElementById('date-container');
+    const hourGrid = document.getElementById('calendar-hour-sidebar');
 
     // const dayView = document.getElementById('calendar-day-view');
     const weekView = document.getElementById('calendar-week-view');
     const monthView = document.getElementById('calendar-month-view');
     // const yearView = document.getElementById('calendar-year-view');
     
+    hourGrid.style.display = 'none';
     // dayView.style.display = 'none';
     weekView.style.display = 'none';
     monthView.style.display = 'none';
@@ -77,6 +79,7 @@ const handleCalendarView = (event) => {
             dateContainer.classList.remove('month');
             dateContainer.classList.add('week');
             updateWeekDisplay();
+            hourGrid.style.display = 'grid';
             document.getElementById('display-week').style.display = 'inline-block';
             break;
         case 'Month':

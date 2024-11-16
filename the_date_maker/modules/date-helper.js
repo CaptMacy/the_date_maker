@@ -71,6 +71,7 @@ const daysInWeek = (sunday) => {
         dayElement.appendChild(dayName);
 
         calendar.appendChild(dayElement);
+        dayElement.addEventListener('click', handleSelect);
 
         if(day.getDate() == currentDay) dayElement.classList.add('currentDay');
     }
@@ -82,9 +83,6 @@ const handleDateDisplayChange = (event) => {
     if(dateContainer.classList.contains('week')) handleWeekChange(event);
     else if(dateContainer.classList.contains('month')) handleMonthChange(event);
 }
-
-
-
 
 const updateWeekDisplay = () => {
     const options = { weekday: 'long' };
