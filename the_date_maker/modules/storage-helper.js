@@ -64,7 +64,8 @@ function buildInstaEntries() {
 
 const deleteEntry = (entry) => {
     const index = entryIdCheck(entry.id);
-
+    console.log('deleeete');
+    
     entry.remove();
     // at array index 'index' , remove 1 item (which is the entryelement)
     storageLocker.splice(index, 1);
@@ -73,6 +74,7 @@ const deleteEntry = (entry) => {
 
 // sets currententry id and calls make an entry form for user to make changes
 const editEntry = (entry, parent) => {
+    console.log('edit');
     const index = entryIdCheck(entry.id);
 
     currentEntry = storageLocker[index];

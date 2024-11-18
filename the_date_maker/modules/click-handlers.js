@@ -16,6 +16,7 @@ let currentWidget = null;
 
 function handleEventPopUp(event) {
     const eventElement = document.getElementById(event.target.id);
+    if(eventElement === undefined || eventElement == null) return;
 
     // this is exclusively used for the edit function
     const parent = event.currentTarget.parentElement;
@@ -37,9 +38,6 @@ function handleEventPopUp(event) {
     
     currentWidget = eventWidget;
 
-    document.removeEventListener('click', hideEventWidget);
-    document.addEventListener('click', hideEventWidget);
-
     eventWidget.querySelector('#delete-btn').addEventListener('click', () => deleteEntry(eventElement));
     eventWidget.querySelector('#edit-btn').addEventListener('click', () => editEntry(eventElement, parent));
 
@@ -51,6 +49,10 @@ function handleEventPopUp(event) {
             document.removeEventListener('click', hideEventWidget); // Remove listener after hiding
         }
     }
+
+    handleClose(e, eventWidget);
+    document.removeEventListener('click', hideEventWidget);
+    document.addEventListener('click', hideEventWidget);
 }
 
 const handleCalendarView = (event) => {
@@ -93,4 +95,19 @@ const handleCalendarView = (event) => {
             break;
     }
 
+}
+
+const handleClose = (e, element) => {
+    const formBody = document.querySelector('body');
+    console.log('handle close');
+    
+    if(e.key == 'Escape') {
+        element.classList.remove('active');
+        formBody.removeEventListener('keydown', handleClose);
+    }
+
+    if(e.key == 'Enter') {
+        element.classList.remove('active');
+        formBody.removeEventListener('keydown', handleClose);
+    }
 }
